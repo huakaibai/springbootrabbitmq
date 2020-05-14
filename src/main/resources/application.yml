@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    addresses: 192.168.19.128:5672,192.168.19.129:5672,192.168.19.130:5672
+  ####连接地址
+
+    ####账号
+    username: admin
+    ####密码
+    password: admin
+    ### 地址
+    virtual-host: /test
+    listener:
+      simple:
+        retry:
+          ####开启消费者（程序出现异常的情况下会）进行重试
+          enabled: true
+          ####最大重试次数
+          max-attempts: 5
+          ####重试间隔时间
+          initial-interval: 1000
+        ####开启手动ack
+        acknowledge-mode: manual
+
+        default-requeue-rejected: false
